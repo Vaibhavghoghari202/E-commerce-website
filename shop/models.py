@@ -1,0 +1,66 @@
+from django.db import models
+
+# Create your models here.
+class Product(models.Model):
+    Product_id=models.AutoField
+    Product_name = models.CharField(max_length=255)
+    category =models.CharField(max_length=50 , default="")
+    subcategory =models.CharField(max_length=50,default="")
+    price = models.IntegerField(default=0)
+    image = models.ImageField(upload_to='sshop/image',default="")
+    Desc= models.CharField(max_length=300)
+    pub_data=models.DateField()
+
+    def __str__(self) :
+        return self.Product_name
+
+class Contact(models.Model):
+    mess_id=models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100)
+    email = models.CharField(max_length=100, default="")
+    Phone = models.CharField(max_length=100, default="")
+    message = models.CharField(max_length=500, default="")
+
+    def __str__(self) :
+        return self.name
+
+class Orders(models.Model):
+    order_id = models.AutoField(primary_key=True)
+    items_json = models.CharField(max_length=5000)
+    amount = models.IntegerField(default=0)
+    fname= models.CharField(max_length=111)
+    lname = models.CharField(max_length=111)
+    phone_Number = models.CharField(max_length=99)
+    gender = models.CharField(max_length=111)
+    address= models.CharField(max_length=111)
+    city = models.CharField(max_length=111)
+    county = models.CharField(max_length=111)
+    zip_code = models.CharField(max_length=111)
+    razorpay_order_id = models.CharField(max_length=100, null=True, blank=True)
+    razorpay_payment_id = models.CharField(max_length=100, null=True, blank=True)
+    payment_status = models.CharField(max_length=50, default="Pending")
+    
+    def __str__(self) :
+        return self.fname
+
+class OrderUpadate(models.Model):
+    update_id=models.AutoField(primary_key=True)
+    order_id =models.IntegerField(default="")
+    update_desc =models.CharField(max_length=5000)
+    timestamp = models.DateField(auto_now_add=True)
+
+    def __str__(self) :
+        return self.update_desc[0:7]+"..."
+
+class Registration(models.Model):
+    ID=models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100)
+    email = models.CharField(max_length=100, default="")
+    Phone = models.CharField(max_length=100, default="")
+    address = models.CharField(max_length=500, default="")
+    password=models.CharField(max_length=100,default="")
+    cpassword = models.CharField(max_length=100,default="")
+    gender = models.CharField(max_length=500, default="")
+
+    def __str__(self) :
+        return self.name

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="shop/LOGO.jpg">
+    <title>{% block title %}Shop{% endblock %}</title>
+    
+    {% block CSS %}
+    <style>
+      footer a {
+          text-decoration: none;
+          color: white;
+      }
+      footer a:hover {
+          color: #ff9c00; /* Highlight on hover */
+      }
+      footer i {
+          font-size: 1.5em;
+      }
+    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    {% endblock %}
+  </head>
+  <body>
+    {% load static %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'home' %}">Welcome</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'about' %}">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/shop/tracker">Teacher</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/blog">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/shop/contact">Contact Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/shop/Registration/">Register</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/shop/login/">Login</a>
+            </li>
+            {% comment %}
+            <li class="nav-item">
+              <a class="nav-link" href="#">Cart (<span id="cart">0</span>)</a>
+            </li>
+            {% endcomment %}
+          </ul>
+          <form method="get" action="/shop/search/" class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search" id="search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+          <a class="nav-link" href="{% url 'checkout' %}">
+            <button type="button" class="btn btn-secondary ms-3 mx-2" data-bs-toggle="hover" data-bs-placement="bottom" title="Tooltip on bottom">
+              Cart (<span id="cart">0</span>)
+            </button>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    {% block body %}{% endblock %}
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white pt-5 pb-4 mt-4">
+      <div class="container text-center text-md-left">
+        <div class="row text-center text-md-left">
+          <!-- Company Information -->
+          <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+            <h5 class="text-uppercase mb-4 font-weight-bold">Company Name</h5>
+            <p>Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+          </div>
+
+          <!-- Quick Links -->
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+            <h5 class="text-uppercase mb-4 font-weight-bold">Quick Links</h5>
+            <p><a href="#" class="text-white">Home</a></p>
+            <p><a href="#" class="text-white">Shop</a></p>
+            <p><a href="#" class="text-white">About Us</a></p>
+            <p><a href="#" class="text-white">Contact</a></p>
+          </div>
+
+          <!-- Customer Support -->
+          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+            <h5 class="text-uppercase mb-4 font-weight-bold">Customer Support</h5>
+            <p><a href="#" class="text-white">FAQ</a></p>
+            <p><a href="#" class="text-white">Shipping Info</a></p>
+            <p><a href="#" class="text-white">Returns</a></p>
+            <p><a href="/shop/tracker" class="text-white">Track Order</a></p>
+          </div>
+
+          <!-- Social Media Links -->
+          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+            <h5 class="text-uppercase mb-4 font-weight-bold">Follow Us</h5>
+            <a href="https://www.facebook.com" class="text-white me-4"><i class="bi bi-facebook"></i></a>
+            <a href="https://www.twitter.com" class="text-white me-4"><i class="bi bi-twitter"></i></a>
+            <a href="https://www.instagram.com" class="text-white me-4"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.linkedin.com" class="text-white me-4"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+
+        <hr class="mb-4">
+
+        <!-- Footer Bottom Row -->
+        <div class="row align-items-center">
+          <div class="col-md-7 col-lg-8">
+            <p class="text-center text-md-left">&copy; 2024 Company Name. All rights reserved.</p>
+          </div>
+          <div class="col-md-5 col-lg-4">
+            <div class="text-center text-md-right">
+              <img src="https://img.icons8.com/color/48/000000/visa.png" alt="Visa" />
+              <img src="https://img.icons8.com/color/48/000000/mastercard.png" alt="Mastercard" />
+              <img src="https://img.icons8.com/color/48/000000/paypal.png" alt="PayPal" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    {% block jS %}{% endblock %}
+  </body>
+</html>
